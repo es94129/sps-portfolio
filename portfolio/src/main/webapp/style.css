@@ -3,7 +3,6 @@
 body {
     padding:0px;
     margin:0px;
-    /*background:linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("me.jpg") center center;*/
     background:linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("https://images.unsplash.com/photo-1576422608509-27457a713964") center center;
     background-size:cover;
     width:100vw;
@@ -53,6 +52,14 @@ body {
 .box2 {
     background:#0AB4B5;
     margin-left:-5px;
+}
+.circle_image{
+    max-width: 20%;
+    height: auto;
+    border-radius: 50%;
+    position: absolute;
+    top: 10%;
+    right: 10%;
 }
 #menu {
     width:100%;
@@ -173,7 +180,9 @@ body {
     height:90vh;
     padding:5vh 5vw;
     background:#0AB4B5;
+    /*background:#81D8D0;*/
     color:#fff;
+    /*color:#0C1514;*/
     z-index:9;
     position:fixed;
     max-height:100vh;
@@ -191,6 +200,17 @@ body {
 .container section {
     margin:8vh 0px;
 }
+
+.row {
+  display: flex;
+}
+
+/* Create three equal columns that sits next to each other */
+.column {
+  flex: 25%;
+  padding: 5px;
+}
+
 #used div{
     font-size:14px !important;
     display:inline-block;
@@ -223,6 +243,7 @@ body {
     font-weight:bold;
     margin:2vh 10px;
     transition:0.4s ease-in-out;
+    text-decoration: none;
 }
 .btn_one:hover {
     cursor:pointer;
@@ -297,11 +318,6 @@ body {
 }
 #footer a {
     color:#0AB4B5 ;
-}
-#particles-js {
-    position:fixed;
-    width:100vw;
-    height:100vh;
 }
 ::-webkit-scrollbar {
     width:5px;
