@@ -53,7 +53,18 @@ setTimeout(function(){
 },1500);
 
 function getMessage() {
-    fetch('/data').then(response => response.text()).then((text) => {
-        document.getElementById('message_container').innerText = text;
+    fetch('/data').then(response => response.json()).then((messages) => {
+        // document.getElementById('message_container').innerText = text;
+        const statsListElement = document.getElementById('messages_container');
+        messages.forEach((message) => {
+            statsListElement.appendChild(
+                createListElement(message));
+        });
     });
+}
+
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
