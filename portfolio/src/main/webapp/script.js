@@ -51,3 +51,9 @@ setTimeout(function(){
       $("#work").removeClass("animated fadeIn");
     },1000);
 },1500);
+
+function getMessage() {
+    fetch('/data').then(response => response.text()).then((text) => {
+        document.getElementById('message_container').innerText = text;
+    });
+}

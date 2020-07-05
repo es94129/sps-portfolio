@@ -33,7 +33,7 @@
         <div id="menu">
             <a onclick="showabout()">about</a>
             <a onclick="showwork()">projects</a>
-            <a onclick="showcontact()">contact</a>
+            <a onclick="showcontact()">comment</a>
         </div>
         <table>
                 <tr>
@@ -115,9 +115,14 @@
         </div>
           <div id="contact_container" class="container">
             <div onclick="closecontact()"><i class="fas fa-angle-down"></i></div>
-            <h1>contact.</h1>
+            <h1>comment.</h1>
             <section>
-                <h2>contact me</h2>
+                <h2>messages</h2>
+                <div id="message_container"></div>
+                <button class="btn_one" onclick="getMessage()">receive message</button>
+            </section>
+            <section>
+                <h2>leave a comment</h2>
                 <p>
                     <form>
                         <input type="text" placeholder="name" required>
