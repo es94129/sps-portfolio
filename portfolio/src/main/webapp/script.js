@@ -1,60 +1,72 @@
-function showabout(){
-    $("#about_container").css("display","inherit");
+function showAbout() {
+    $("#about_container").css("display", "inherit");
     $("#about_container").addClass("animated slideInLeft");
-    setTimeout(function(){
-        $("#about_container").removeClass("animated slideInLeft");
-    },800);
+    setTimeout(function() {
+            $("#about_container").removeClass("animated slideInLeft");
+        },
+        800);
 }
-function closeabout(){
+
+function closeAbout() {
     $("#about_container").addClass("animated slideOutLeft");
-    setTimeout(function(){
-        $("#about_container").removeClass("animated slideOutLeft");
-        $("#about_container").css("display","none");
-    },800);
+    setTimeout(function() {
+            $("#about_container").removeClass("animated slideOutLeft");
+            $("#about_container").css("display", "none");
+        },
+        800);
 }
-function showwork(){
-    $("#work_container").css("display","inherit");
+
+function showWork() {
+    $("#work_container").css("display", "inherit");
     $("#work_container").addClass("animated slideInRight");
-    setTimeout(function(){
-        $("#work_container").removeClass("animated slideInRight");
-    },800);
+    setTimeout(function() {
+            $("#work_container").removeClass("animated slideInRight");
+        },
+        800);
 }
-function closework(){
+
+function closeWork() {
     $("#work_container").addClass("animated slideOutRight");
-    setTimeout(function(){
-        $("#work_container").removeClass("animated slideOutRight");
-        $("#work_container").css("display","none");
-    },800);
+    setTimeout(function() {
+            $("#work_container").removeClass("animated slideOutRight");
+            $("#work_container").css("display", "none");
+        },
+        800);
 }
-function showcontact(){
-    $("#contact_container").css("display","inherit");
+
+function showContact() {
+    $("#contact_container").css("display", "inherit");
     $("#contact_container").addClass("animated slideInUp");
-    setTimeout(function(){
-        $("#contact_container").removeClass("animated slideInUp");
-    },800);
+    setTimeout(function() {
+            $("#contact_container").removeClass("animated slideInUp");
+        },
+        800);
 }
-function closecontact(){
+
+function closeContact() {
     $("#contact_container").addClass("animated slideOutDown");
-    setTimeout(function(){
-        $("#contact_container").removeClass("animated slideOutDown");
-        $("#contact_container").css("display","none");
-    },800);
+    setTimeout(function() {
+            $("#contact_container").removeClass("animated slideOutDown");
+            $("#contact_container").css("display", "none");
+        },
+        800);
 }
-setTimeout(function(){
+setTimeout(function() {
     $("#loading").addClass("animated fadeOut");
-    setTimeout(function(){
-      $("#loading").removeClass("animated fadeOut");
-      $("#loading").css("display","none");
-      $("#box").css("display","none");
-      $("#about").removeClass("animated fadeIn");
-      $("#contact").removeClass("animated fadeIn");
-      $("#work").removeClass("animated fadeIn");
-    },1000);
-},1500);
+    setTimeout(function() {
+            $("#loading").removeClass("animated fadeOut");
+            $("#loading").css("display", "none");
+            $("#box").css("display", "none");
+            $("#about").removeClass("animated fadeIn");
+            $("#contact").removeClass("animated fadeIn");
+            $("#work").removeClass("animated fadeIn");
+        },
+        1000);
+    },
+    1500);
 
 function getMessage() {
     fetch('/data').then(response => response.json()).then((messages) => {
-        // document.getElementById('message_container').innerText = text;
         const statsListElement = document.getElementById('messages_container');
         messages.forEach((message) => {
             statsListElement.appendChild(
@@ -64,7 +76,7 @@ function getMessage() {
 }
 
 function createListElement(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
 }
