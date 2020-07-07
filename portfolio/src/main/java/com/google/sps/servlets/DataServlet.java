@@ -27,19 +27,25 @@ import java.util.ArrayList;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   private ArrayList<String> messages = new ArrayList<String>();
+  private String messages_json = null;
+  private boolean messages_updated = false;
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {    
-    String json = convertToJsonUsingGson(messages);
+    if (messages_json == null || messages_updated == true) {
+        messages_json = convertToJsonUsingGson(messages);
+        messages_updated = false;
+    }
 
     response.setContentType("application/json;");
-    response.getWriter().println(json);
+    response.getWriter().println(messages_json);
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String message = request.getParameter("message");
     messages.add(message);
+    messages_updated = true;
     response.sendRedirect("/index.html");
   }
 
