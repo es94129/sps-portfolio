@@ -51,6 +51,7 @@ function closeContact() {
         },
         800);
 }
+
 setTimeout(function() {
     $("#loading").addClass("animated fadeOut");
     setTimeout(function() {

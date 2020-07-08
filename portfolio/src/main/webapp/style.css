@@ -206,9 +206,7 @@ body {
     height: 90vh;
     padding: 5vh 5vw;
     background: #0AB4B5;
-    /*background:#81D8D0;*/
     color: #fff;
-    /*color:#0C1514;*/
     z-index: 9;
     position: fixed;
     max-height: 100vh;
