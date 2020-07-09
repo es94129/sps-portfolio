@@ -14,7 +14,10 @@
 
 package com.google.sps.servlets;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +26,29 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+  private ArrayList<String> messages = new ArrayList<String>();
+  private String messages_json = null;
 
   @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello world!</h1>");
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {    
+    response.setContentType("application/json;");
+    response.getWriter().println(messages_json);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String message = request.getParameter("message");
+    if (message.length() == 0) {
+        response.sendError(HttpServletResponse.SC_FORBIDDEN, "empty message");
+    }
+    else {
+        messages.add(message);
+        messages_json = convertToJsonUsingGson(messages);
+        response.sendRedirect("/index.html");
+    }
+  }
+
+  static private String convertToJsonUsingGson(ArrayList<String> messages) {
+    return new Gson().toJson(messages);
   }
 }
