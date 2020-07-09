@@ -38,9 +38,14 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String message = request.getParameter("message");
-    messages.add(message);
-    messages_json = convertToJsonUsingGson(messages);
-    response.sendRedirect("/index.html");
+    if (message.length() == 0) {
+        response.sendError(HttpServletResponse.SC_NOT_FOUND, "empty message");
+    }
+    else {
+        messages.add(message);
+        messages_json = convertToJsonUsingGson(messages);
+        response.sendRedirect("/index.html");
+    }
   }
 
   static private String convertToJsonUsingGson(ArrayList<String> messages) {
