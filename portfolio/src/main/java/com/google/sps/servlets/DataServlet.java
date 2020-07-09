@@ -49,12 +49,12 @@ public class DataServlet extends HttpServlet {
         messages.add(message);
         messages_json = convertToJsonUsingGson(messages);
  
-        long timestamp = System.currentTimeMillis();
+        final long timestamp = System.currentTimeMillis();
 
         Entity commentEntity = new Entity("Comment");
         commentEntity.setProperty("message", message);
         commentEntity.setProperty("timestamp", timestamp);
-        
+
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         datastore.put(commentEntity);
 
