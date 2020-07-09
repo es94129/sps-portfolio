@@ -14,6 +14,9 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -38,12 +41,23 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String message = request.getParameter("message");
+
     if (message.length() == 0) {
         response.sendError(HttpServletResponse.SC_FORBIDDEN, "empty message");
     }
     else {
         messages.add(message);
         messages_json = convertToJsonUsingGson(messages);
+ 
+        long timestamp = System.currentTimeMillis();
+
+        Entity commentEntity = new Entity("Comment");
+        commentEntity.setProperty("message", message);
+        commentEntity.setProperty("timestamp", timestamp);
+        
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        datastore.put(commentEntity);
+
         response.sendRedirect("/index.html");
     }
   }
