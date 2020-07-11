@@ -41,13 +41,11 @@ public class DataServlet extends HttpServlet {
 
     ArrayList<String> messages = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
-      String message = (String) entity.getProperty("message");
-      messages.add(message);
+      messages.add((String) entity.getProperty("message"));
     }
-    String messages_json = convertToJsonUsingGson(messages);
 
     response.setContentType("application/json;");
-    response.getWriter().println(messages_json);
+    response.getWriter().println(convertToJsonUsingGson(messages));
   }
 
   @Override
