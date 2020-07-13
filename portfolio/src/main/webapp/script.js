@@ -85,3 +85,16 @@ function createListElement(text) {
 function showUploadFilename(filename) {
     $('#upload-filename').html(filename);
 }
+
+function fetchBlobstoreUrlAndShowForm() {
+  fetch('/blobstore-upload-url')
+      .then((response) => {
+        return response.text();
+      })
+      .then((imageUploadUrl) => {
+        const messageForm = document.getElementById('comment-form');
+        messageForm.action = imageUploadUrl;
+        console.log(imageUploadUrl);
+        messageForm.classList.remove('hidden');
+      });
+}

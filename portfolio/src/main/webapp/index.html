@@ -13,7 +13,7 @@
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="getMessage()">
+<body onload="getMessage();fetchBlobstoreUrlAndShowForm()">
     <div id="loading">
         <div id="spinner"></div>
     </div>
@@ -124,9 +124,9 @@
             <section>
                 <h2>leave a comment</h2>
                 <p>
-                    <form action="/data" method="POST">
+                    <form id="comment-form" class="hidden" method="POST" enctype="multipart/form-data">
                         <label class="btn_two">
-                            <input id="upload_img" style="display:none;" type="file"
+                            <input name="upload_img" style="display:none;" type="file"
                             onchange="showUploadFilename(this.files[0].name)">
                             upload image
                         </label>
