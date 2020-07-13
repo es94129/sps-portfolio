@@ -81,3 +81,7 @@ function createListElement(text) {
     liElement.innerText = text;
     return liElement;
 }
+
+function showUploadFilename(filename) {
+    $('#upload-filename').html(filename);
+}
