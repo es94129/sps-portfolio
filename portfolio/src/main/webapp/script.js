@@ -94,7 +94,6 @@ function fetchBlobstoreUrlAndShowForm() {
       .then((imageUploadUrl) => {
         const messageForm = document.getElementById('comment-form');
         messageForm.action = imageUploadUrl;
-        console.log(imageUploadUrl);
         messageForm.classList.remove('hidden');
       });
 }
