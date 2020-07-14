@@ -1,8 +1,8 @@
 package com.google.sps.servlets;
 
 class Comment {
-    String message;
-    String imageUrl;
+    private String message;
+    private String imageUrl;
 
     Comment(String message, String imageUrl) {
         this.message = message;

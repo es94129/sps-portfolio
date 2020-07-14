@@ -13,6 +13,7 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
+
 import com.google.appengine.api.blobstore.BlobInfo;
 import com.google.appengine.api.blobstore.BlobInfoFactory;
 import com.google.appengine.api.blobstore.BlobKey;
@@ -48,10 +49,8 @@ public class DataServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
-    // ArrayList<String> messages = new ArrayList<>();
     ArrayList<Comment> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
-    //   messages.add((String) entity.getProperty("message"));
         String message = (String) entity.getProperty("message");
         String imageUrl = (String) entity.getProperty("imageUrl");
         comments.add(new Comment(message, imageUrl));
