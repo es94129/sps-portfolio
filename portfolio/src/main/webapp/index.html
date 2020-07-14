@@ -13,7 +13,7 @@
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="getMessage();fetchBlobstoreUrlAndShowForm()">
+<body onload="getComment();fetchBlobstoreUrlAndShowForm()">
     <div id="loading">
         <div id="spinner"></div>
     </div>
@@ -118,7 +118,7 @@
             <div onclick="closeContact()"><i class="fas fa-angle-down"></i></div>
             <h1>comment.</h1>
             <section>
-                <h2>messages</h2>
+                <h2>comments</h2>
                 <ul id="messages_container"></ul>
             </section>
             <section>
