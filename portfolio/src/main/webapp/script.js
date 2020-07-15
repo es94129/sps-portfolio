@@ -81,8 +81,7 @@ function createListElement(comment) {
     liElement.innerText = comment['message'];
 
     if (comment.hasOwnProperty('imageUrl')) {
-        var brElement = document.createElement('br');
-        liElement.appendChild(brElement);
+        liElement.appendChild(document.createElement('br'));
 
         const imgElement = document.createElement('img');
         imgElement.src = comment['imageUrl'];

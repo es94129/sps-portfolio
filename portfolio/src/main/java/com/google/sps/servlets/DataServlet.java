@@ -94,7 +94,7 @@ public class DataServlet extends HttpServlet {
     List<BlobKey> blobKeys = blobs.get(formInputElementName);
 
     // User submitted form without selecting a file, so we can't get a URL. (dev server)
-    if (blobKeys == null || blobKeys.isEmpty()) {
+    if (blobKeys == null || blobKeys.isEmpty() || blobKeys.size() != 1) {
       return null;
     }
 
