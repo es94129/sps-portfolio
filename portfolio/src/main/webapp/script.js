@@ -66,18 +66,41 @@ setTimeout(function() {
     },
     1500);
 
-function getMessage() {
-    fetch('/data').then(response => response.json()).then((messages) => {
+function getComment() {
+    fetch('/data').then(response => response.json()).then((comments) => {
         const statsListElement = document.getElementById('messages_container');
-        messages.forEach((message) => {
+        comments.forEach((comment) => {
             statsListElement.appendChild(
-                createListElement(message));
+                createListElement(comment));
         });
     });
 }
 
-function createListElement(text) {
+function createListElement(comment) {
     const liElement = document.createElement('li');
-    liElement.innerText = text;
+    liElement.innerText = comment['message'];
+
+    if (comment.hasOwnProperty('imageUrl')) {
+        liElement.appendChild(document.createElement('br'));
+
+        const imgElement = document.createElement('img');
+        imgElement.src = comment['imageUrl'];
+        liElement.appendChild(imgElement);
+    }
+
     return liElement;
+}
+
+function showUploadFilename(filename) {
+    $('#upload-filename').html(filename);
+}
+
+function fetchBlobstoreUrlAndShowForm() {
+  fetch('/blobstore-upload-url')
+      .then(response => response.text())
+      .then((imageUploadUrl) => {
+        const messageForm = document.getElementById('comment-form');
+        messageForm.action = imageUploadUrl;
+        messageForm.classList.remove('hidden');
+      });
 }

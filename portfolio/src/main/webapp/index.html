@@ -13,7 +13,7 @@
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="getComment();fetchBlobstoreUrlAndShowForm()">
     <div id="loading">
         <div id="spinner"></div>
     </div>
@@ -118,19 +118,22 @@
             <div onclick="closeContact()"><i class="fas fa-angle-down"></i></div>
             <h1>comment.</h1>
             <section>
-                <h2>messages</h2>
+                <h2>comments</h2>
                 <ul id="messages_container"></ul>
-                <button class="btn_one" onclick="getMessage()">receive message</button>
             </section>
             <section>
                 <h2>leave a comment</h2>
                 <p>
-                    <form action="/data" method="POST">
-                        <input type="text" placeholder="name" name="name">
-                        <input type="email" placeholder="email" name="email"><br>
+                    <form id="comment-form" class="hidden" method="POST" enctype="multipart/form-data">
+                        <label class="btn_two">
+                            <input name="upload_img" style="display:none;" type="file"
+                                onchange="showUploadFilename(this.files[0].name)">
+                            upload image
+                        </label>
+                        <span id="upload-filename"></span><br>
                         <textarea placeholder="your message" required rows="5" name="message"></textarea><br>
                         <button class="btn_one" type="submit">send</button>
-                    </form> 
+                    </form>
                 </p>
             </section>
         </div>

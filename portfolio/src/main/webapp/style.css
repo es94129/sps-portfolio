@@ -73,6 +73,10 @@ body {
     right: 10%;
 }
 
+.hidden {
+    display: none;
+}
+
 #menu {
     width: 100%;
     text-align: center;
